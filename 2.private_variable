@@ -1,0 +1,80 @@
+class Circle:
+    # Private class variable for the value of pi
+    __pi = 3.141
+
+    def __init__(self, radii):
+        """
+        Constructor that initializes the Circle class with a list of radii.
+
+        Args:
+            radii (list): List of radii.
+        """
+        self.__radii = radii
+
+    def calculate_areas(self):
+        """
+        Calculate the area for each radius in the list.
+
+        Returns:
+            list: List of areas corresponding to each radius.
+        """
+        areas = [self.__pi * r ** 2 for r in self.__radii]
+        return areas
+
+    def calculate_circumferences(self):
+        """
+        Calculate the circumference for each radius in the list.
+
+        Returns:
+            list: List of circumferences corresponding to each radius.
+        """
+        circumferences = [2 * self.__pi * r for r in self.__radii]
+        return circumferences
+
+    def find_max_radius(self):
+        """
+        Find the maximum radius in the list.
+
+        Returns:
+            int/float: The maximum radius.
+        """
+        return max(self.__radii)
+
+    def find_min_radius(self):
+        """
+        Find the minimum radius in the list.
+
+        Returns:
+            int/float: The minimum radius.
+        """
+        return min(self.__radii)
+
+    def display_radii(self):
+        """
+        Display all the radii in the list.
+        """
+        print("Radii:", self.__radii)
+
+
+# Example usage
+radii_list = [10, 501, 22, 37, 100, 999, 87, 351]
+circle = Circle(radii_list)
+
+# Display the radii
+circle.display_radii()
+
+# Calculate and display the areas
+areas = circle.calculate_areas()
+print("Areas:", areas)
+
+# Calculate and display the circumferences
+circumferences = circle.calculate_circumferences()
+print("Circumferences:", circumferences)
+
+# Find and display the maximum radius
+max_radius = circle.find_max_radius()
+print("Maximum Radius:", max_radius)
+
+# Find and display the minimum radius
+min_radius = circle.find_min_radius()
+print("Minimum Radius:", min_radius)
