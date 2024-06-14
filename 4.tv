@@ -1,0 +1,96 @@
+class TV:
+    def __init__(self, brand):
+        # Initialize the TV with default settings
+        self.brand = brand
+        self.channel = 1
+        self.volume = 50
+        self.price = 0
+        self.inches = 0
+        self.on_off_status = False
+
+    def increase_volume(self):
+        # Increase the volume, but don't exceed 100
+        if self.volume < 100:
+            self.volume += 1
+
+    def decrease_volume(self):
+        # Decrease the volume, but don't go below 0
+        if self.volume > 0:
+            self.volume -= 1
+
+    def set_channel(self, channel):
+        # Set the channel if it's between 1 and 50
+        if 1 <= channel <= 50:
+            self.channel = channel
+
+    def reset_tv(self):
+        # Reset to default channel and volume
+        self.channel = 1
+        self.volume = 50
+
+    def status(self):
+        # Return the current status of the TV
+        return f"{self.brand} at channel {self.channel}, volume {self.volume}"
+
+class LedTV(TV):
+    def __init__(self, brand, screen_thickness, energy_usage, lifespan, refresh_rate):
+        # Initialize the LED TV with additional properties
+        super().__init__(brand)
+        self.screen_thickness = screen_thickness
+        self.energy_usage = energy_usage
+        self.lifespan = lifespan
+        self.refresh_rate = refresh_rate
+
+    def display_details(self):
+        # Display the details of the LED TV
+        details = (
+            f"Brand: {self.brand}\n"
+            f"Screen Thickness: {self.screen_thickness} inches\n"
+            f"Energy Usage: {self.energy_usage} watts\n"
+            f"Lifespan: {self.lifespan} hours\n"
+            f"Refresh Rate: {self.refresh_rate} Hz\n"
+            f"Viewing Angle: Wide\n"
+            f"Backlight: LED"
+        )
+        print(details)
+
+class PlasmaTV(TV):
+    def __init__(self, brand, screen_thickness, energy_usage, lifespan, refresh_rate):
+        # Initialize the Plasma TV with additional properties
+        super().__init__(brand)
+        self.screen_thickness = screen_thickness
+        self.energy_usage = energy_usage
+        self.lifespan = lifespan
+        self.refresh_rate = refresh_rate
+
+    def display_details(self):
+        # Display the details of the Plasma TV
+        details = (
+            f"Brand: {self.brand}\n"
+            f"Screen Thickness: {self.screen_thickness} inches\n"
+            f"Energy Usage: {self.energy_usage} watts\n"
+            f"Lifespan: {self.lifespan} hours\n"
+            f"Refresh Rate: {self.refresh_rate} Hz\n"
+            f"Viewing Angle: Good\n"
+            f"Backlight: None (self-illuminating pixels)"
+        )
+        print(details)
+
+# Create a generic TV instance
+tv = TV("Panasonic")
+print(tv.status())  # Panasonic at channel 1, volume 50
+tv.increase_volume()
+tv.set_channel(8)
+print(tv.status())  # Panasonic at channel 8, volume 51
+tv.reset_tv()
+print(tv.status())  # Panasonic at channel 1, volume 50
+
+# Create an LED TV instance
+led_tv = LedTV("Sony", 0.5, 100, 50000, 120)
+print(led_tv.status())  # Sony at channel 1, volume 50
+led_tv.display_details()
+
+# Create a Plasma TV instance
+plasma_tv = PlasmaTV("Samsung", 1.0, 150, 30000, 60)
+print(plasma_tv.status())  # Samsung at channel 1, volume 50
+plasma_tv.display_details()
